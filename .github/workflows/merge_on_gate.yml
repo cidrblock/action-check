@@ -27,6 +27,7 @@ jobs:
     - name:
       env:
         PR_URL: ${{ github.event.pull_request._links.self.href }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo "$PR_URL"
         gh pr merge $PR_URL --squash
