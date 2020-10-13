@@ -20,16 +20,18 @@ jobs:
         sudo apt-add-repository https://cli.github.com/packages
         sudo apt update
         sudo apt install gh
-    - name: echo gh
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+    # - name: echo gh
+    #   env:
+    #     GITHUB_CONTEXT: ${{ toJson(github) }}
+    #   run: echo "$GITHUB_CONTEXT"
+    - name: Check out code
+      uses: actions/checkout@v2
     - name:
       env:
         PR_URL: ${{ github.event.pull_request._links.self.href }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        echo "$PR_URL"
+        # echo "$PR_URL"
         gh pr merge $PR_URL --squash
 
 
