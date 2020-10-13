@@ -8,8 +8,8 @@ on:
 
 jobs:
   merge:
+    if: github.event.label.name == 'gate'
     name: merge
-    if: contains(github.event.pull_request.labels.*.name, 'gate')
     runs-on: ubuntu-latest
     steps:
     - name: echo gh
