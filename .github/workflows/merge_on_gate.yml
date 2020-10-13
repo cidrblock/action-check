@@ -9,7 +9,7 @@ on:
 jobs:
   merge:
     if: |
-      github.event.label.name == 'gate' and 
+      github.event.label.name == 'gate' && 
       github.event_name == 'pull_request'
     name: merge
     runs-on: ubuntu-latest
