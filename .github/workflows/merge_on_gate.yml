@@ -32,6 +32,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         # echo "$PR_URL"
+        git checkout master
         gh pr merge $PR --squash
 
 
