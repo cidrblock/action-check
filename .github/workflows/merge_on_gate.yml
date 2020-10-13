@@ -1,0 +1,21 @@
+
+name: Publish
+on:
+  pull_request:
+    branches:
+    - master
+    types: [labeled]
+
+jobs:
+  merge:
+    name: merge
+    if: contains(github.event.pull_request.labels.*.name, 'gate')
+    runs-on: ubuntu-latest
+    steps:
+    - name: echo gh
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+
+
+
