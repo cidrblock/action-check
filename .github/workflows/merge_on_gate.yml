@@ -8,7 +8,9 @@ on:
 
 jobs:
   merge:
-    if: github.event.label.name == 'gate'
+    if: |
+      github.event.label.name == 'gate' and 
+      github.event_name == 'pull_request'
     name: merge
     runs-on: ubuntu-latest
     steps:
@@ -16,6 +18,11 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
+    - name:
+      env:
+        PR_URL: ${{ github.event.pull_request.self.href }}
+      run: echo "$PR_URL"
+
 
 
 
