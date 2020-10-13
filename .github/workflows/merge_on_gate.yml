@@ -30,12 +30,12 @@ jobs:
         fetch-depth: 0
     - name:
       env:
-        # DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         PR: ${{ github.event.number }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         # echo "$PR_URL"
-        # git checkout $DEFAULT_BRANCH
+        git checkout $DEFAULT_BRANCH
         gh pr merge $PR --squash
 
 
